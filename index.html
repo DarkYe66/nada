@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Meta tag para responsividad -->
+    <title>Para mi amor 💖</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #ffe6f0, #ffd1dc);
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 50px;
+            color: #b30059;
+            position: relative;
+            overflow: auto;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px;
+        }
+
+        .img-container {
+            margin: 30px auto;
+        }
+
+        img {
+            width: 100%; /* Asegura que la imagen no sobrepase el contenedor */
+            max-width: 300px; /* Limita el tamaño máximo de la imagen */
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .heart {
+            font-size: 2em;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        #frase {
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff6699;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #e60073;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 2.5em;
+            color: #ff66b2;
+            animation: float 3s infinite ease-in-out;
+            z-index: 10;
+        }
+
+        .te-quiero {
+            font-size: 2em;
+            color: #ff66b2;
+            font-weight: bold;
+            animation: subir 6s ease-in-out forwards;
+            opacity: 0;
+            position: absolute;
+        }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(100%);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200%);
+                opacity: 0;
+            }
+        }
+
+        /* Media queries para hacer el diseño más responsivo */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
+
+            button {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+
+            .heart {
+                font-size: 1.5em;
+            }
+
+            .floating-heart {
+                font-size: 2em;
+            }
+
+            img {
+                width: 80%; /* Imágenes un poco más pequeñas en dispositivos móviles */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+
+            .heart {
+                font-size: 1.3em;
+            }
+
+            .floating-heart {
+                font-size: 1.8em;
+            }
+
+            button {
+                font-size: 0.8em;
+                padding: 7px 12px;
+            }
+
+            img {
+                width: 90%; /* Asegura que la imagen no sea demasiado grande en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>¡Feliz Cumpleaños, mi amor! 🎉</h1>
+    <p>Hoy celebro tu vida y lo afortunado que soy por tenerte. 💕</p>
+
+    <div class="img-container">
+        <img id="imagen-amor" src="imagen1.jpg" alt="Foto linda de ustedes dos">
+    </div>
+
+    <p>Gracias por ser tú, por tu sonrisa, por tus abrazos... y por hacer mis días más felices. Te amo muchísimo ❤️</p>
+    <div class="heart">💖 💖 💖</div>
+
+    <button onclick="mostrarFrase()">Haz clic para una sorpresa 💌</button>
+    <p id="frase"></p>
+
+    <audio autoplay loop>
+        <source src="musica.mp3" type="audio/mpeg">
+        Tu navegador no soporta el audio 😢
+    </audio>
+
+    <!-- Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // Confeti original desde el centro hacia arriba
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+
+        // Generar corazones flotando por toda la pantalla
+        function generarCorazones() {
+            const container = document.body;
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement("div");
+                heart.classList.add("floating-heart");
+                heart.textContent = "❤️";
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.animationDuration = `${3 + Math.random() * 3}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(heart);
+            }
+        }
+
+        const frases = [
+            "Eres mi sol en los días nublados ☀️",
+            "Contigo todo es mejor 💑",
+            "Te volvería a elegir una y mil veces 💖",
+            "Mi lugar favorito es a tu lado 🥰",
+            "Eres mi persona favorita en el mundo 🌎"
+        ];
+
+        const imagenes = [
+            "imagen1.jpeg",
+            "imagen2.jpeg",
+            "imagen3.jpeg",
+            "imagen4.jpeg",
+            "imagen5.jpeg"
+        ];
+
+        function mostrarFrase() {
+            const frase = frases[Math.floor(Math.random() * frases.length)];
+            document.getElementById('frase').textContent = frase;
+
+            const nuevaImagen = imagenes[Math.floor(Math.random() * imagenes.length)];
+            document.getElementById('imagen-amor').src = nuevaImagen;
+        }
+
+        // Mostrar mensaje "Te quiero" en posiciones aleatorias
+        function mostrarTeQuiero() {
+            const mensaje = document.createElement("div");
+            mensaje.classList.add("te-quiero");
+            mensaje.textContent = "Te quiero muchísimo 💖";
+
+            // Posición aleatoria en X y Y
+            mensaje.style.left = `${Math.random() * 90}%`;
+            mensaje.style.top = `${Math.random() * 90}%`;
+            document.body.appendChild(mensaje);
+        }
+
+        window.onload = function() {
+            generarCorazones();
+            setInterval(mostrarTeQuiero, 2000);  // Mostrar un "Te quiero" cada 2 segundos
+        };
+
+    </script>
+
+</body>
+</html>
