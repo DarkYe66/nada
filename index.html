@@ -75,6 +75,11 @@
             z-index: 10;
         }
 
+        @keyframes float {
+            0% { transform: translate(0, 0); opacity: 1; }
+            100% { transform: translate(100px, -100px); opacity: 0; } /* Mueve el corazón de forma diagonal */
+        }
+
         .te-quiero {
             font-size: 2em;
             color: #ff66b2;
